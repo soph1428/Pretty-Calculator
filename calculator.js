@@ -9,8 +9,8 @@ function button(button) {
         if (answersDiv.textContent[answersDiv.textContent.length - 1] == `√`) answersDiv.textContent = answersDiv.textContent.slice(0, -1)
     } else if (button.textContent == `=`) answersDiv.textContent = answer()
 } function answer() {
-    let equation = `return ${answersDiv.textContent.replaceAll(`x`, `*`).replaceAll(`^`, `**`).replaceAll(`√(`, `Math.sqrt(`).replaceAll(`π`, `Math.PI`)}`
-    try {new Function(equation)()
-        return new Function(equation)()
+    let equation = answersDiv.textContent.replaceAll(`x`, `*`).replaceAll(`^`, `**`).replaceAll(`√(`, `Math.sqrt(`).replaceAll(`π`, `Math.PI`)
+    try {new Function(`if (${equation}) {return ${equation}} else return 'Syntax error'`)()
+        return new Function(`if (${equation}) {return ${equation}} else return 'Syntax error'`)()
     } catch {return `Syntax error`}
 }
