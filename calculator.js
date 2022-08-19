@@ -10,7 +10,7 @@ function button(button) {
     } else if (button.textContent == `=`) answersDiv.textContent = answer()
 } function answer() {
     let equation = answersDiv.textContent.replaceAll(`x`, `*`).replaceAll(`^`, `**`).replaceAll(`√(`, `Math.sqrt(`).replaceAll(`π`, `Math.PI`)
-    try {new Function(`if (${equation}) {return ${equation}} else return 'Syntax error'`)()
-        return new Function(`if (${equation}) {return ${equation}} else return 'Syntax error'`)()
+    try {new Function(equation)()
+        return new Function(`if (${equation} != undefined) {return ${equation}} else return 'Syntax error'`)()
     } catch {return `Syntax error`}
 }
