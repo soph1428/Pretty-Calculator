@@ -13,4 +13,8 @@ function button(button) {
     try {new Function(equation)()
         return new Function(`if (${equation} != undefined) {return ${equation}} else return 'Syntax error'`)()
     } catch {return `Syntax error`}
+} document.onkeydown = function(e) {
+    var Button = document.createElement("button")
+    Button.textContent = e.key
+    if (!isNaN(e.key)) button(Button, true)
 }
